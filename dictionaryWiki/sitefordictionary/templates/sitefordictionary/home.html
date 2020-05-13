@@ -1,0 +1,29 @@
+{% extends "sitefordictionary/base.html" %}
+
+{% block title %}
+Homepage
+{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+  {% if Words %}
+    {% for word in Words %}
+    <br>
+    <div class="container jumbotron w-50">
+    <a href="{% url 'viewWord' word.0 %}"><h3>{{word.1}}</h3></a>
+
+      <p>{{word.2 | safe}}</p>
+      <h6>Sample Sentence</h6>
+      {{word.3 | safe}}
+      </div>
+    {% endfor %}
+  {% else %}
+    <br>
+    <div class="container jumbotron w-50">
+    <h3>No words in database.</h3>
+    </div>
+  {% endif %}
+
+{% endblock %}

@@ -1,0 +1,23 @@
+{% extends "sitefordictionary/base.html" %}
+
+{% block title %}
+Homepage
+{% endblock %}
+
+{% block head %}
+{% endblock %}
+
+{% block body %}
+
+    <br>
+    <div class="container jumbotron w-50">
+    <h3>{{Word}}</h3>
+      {% for definition in Word.dictionaryDefinition.all %}
+        <p>{{definition}}</p>
+        <h6>Sample Sentence</h6>
+        {{definition.dictionarySentence}}
+      {% endfor %}
+    </div>
+
+
+{% endblock %}

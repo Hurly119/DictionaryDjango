@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+        <link rel="stylesheet" type="text/css" href="{% static 'sitefordictionary/css/bootstrap.css' %}">
+    {% block head %}{% endblock %}
+  </head>
+  <body>
+    <nav class="navbar navbar-light bg-light">
+      <form class="form-inline my-0 mx-auto">
+        <a href="{% url 'index' %}" class="navbar-brand">Dictionary</a>
+        <input class="form-control mr-sm-2" size="50" type="search" placeholder="Search" aria-label="Search">
+        <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+        <a href="{% url 'addWords' %}" class="btn btn-primary ml-2">Add Word</a>
+      </form>
+    </nav>
+    {% block body %}
+    {% endblock %}
+  </body>
+</html>

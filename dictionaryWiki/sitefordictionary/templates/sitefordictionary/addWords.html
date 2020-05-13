@@ -1,0 +1,29 @@
+{% extends 'sitefordictionary/base.html' %}
+
+{% block title %} Add New Word {% endblock %}
+
+{% block body %}
+<div class="container my-0 mx-auto">
+  <form action="{% url 'addWords' %}" method="POST">
+      {% csrf_token %}
+    <div class="form-group">
+      <label for="word">Word</label>
+      <input type="text" size="30" class="form-control" name="word" id="word" placeholder="Enter Word">
+    </div>
+    <div class="form-group">
+      <label for="definition">Definition</label>
+      <textarea class="form-control" name="definition" id="definition" placeholder="Enter Definition"rows="6" cols="80"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="sentence">Example Sentence(s)</label>
+      <textarea class="form-control" name="sentence" id="sentence" placeholder="Use the word in a sentence(s)."rows="4" cols="80"></textarea>
+    </div>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+  {% if messages %}
+    {% for msg in messages %}
+    <p{% if msg.tags %} class="text-{{ msg.tags }}" {% endif %}>{{ msg.message }}</p>
+    {% endfor %}
+  {% endif %}
+</div>
+{% endblock %}
